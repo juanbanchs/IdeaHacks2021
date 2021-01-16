@@ -1,0 +1,33 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(-90deg, #89cff0 , #0d98ba);
+}
+
+.nav-link {
+    font-size: 1.4rem !important;
+}
+
+.vertical-center {
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+
+.heading {
+    color: white;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.large-text {
+    color: white;
+    font-size: 2.2rem !important;
+}
+
+.btn {
+    height: 2.5rem;
+    margin-top: 10px;
+}
