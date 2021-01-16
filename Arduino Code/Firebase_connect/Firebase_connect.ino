@@ -2,8 +2,8 @@
 
 #include <FirebaseArduino.h>
 
-#define WIFI_SSID "Singapore"
-#define WIFI_PASSWORD "REMFVREMVJSAM"
+#define WIFI_SSID "-"
+#define WIFI_PASSWORD "-"
 #define FIREBASE_HOST "wifi-test-4f471.firebaseio.com"
 #define FIREBASE_AUTH "cdcAVI94Alk9mgeGwLe10HWI241hnobn26ndzsGQ"
 
