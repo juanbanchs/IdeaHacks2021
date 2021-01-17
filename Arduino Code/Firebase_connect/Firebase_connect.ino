@@ -1,13 +1,23 @@
-#include <ESP8266WiFi.h>
-#include <FirebaseArduino.h>
+#include <FB_HTTPClient32.h>
+#include <FirebaseESP32.h>
+#include <FirebaseJson.h>
+
+#include <WiFi.h>
+#include <ESP32_Servo.h>
 
 // Set your SSID and password
-#define WIFI_SSID "-"
-#define WIFI_PASSWORD "-"
+#define WIFI_SSID "SpectrumSetup-38"
+#define WIFI_PASSWORD "stealthlake576"
 #define FIREBASE_HOST "ideahacks-2021-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "GpHybjDmvic4hp1j0TocrBZDce7mv69v18ZTsYjr"
 
+FirebaseData fbdo;
+
 //int LED1 = 4;
+
+Servo pill_dispenser;
+#define servo_pin 18
+int pos = 0;
 
 void setup()
 {
@@ -18,14 +28,16 @@ void setup()
   wifiConnect();
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   delay(10);
+
+  pill_dispenser.attach(18);
 }
 
 void loop()
 {  
-  
-  Serial.print(Firebase.getString("NewMessage") + "\n");
+  Serial.println("Start of loop");
+  Serial.print(Firebase.getString(fbdo, "NewMessage") + "\n");
+  Serial.println(fbdo.stringData());
   delay(1000);
-  //analogWrite(LED1, Firebase.getString("NewMessage").toInt());
   
   if(WiFi.status() != WL_CONNECTED)
   {
@@ -33,6 +45,21 @@ void loop()
   }
   delay(10);
 
+  moveServo();
+
+}
+
+void moveServo()
+{
+  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    pill_dispenser.write(pos);              // tell servo to go to position in variable 'pos'
+                    // waits 15ms for the servo to reach the position
+  }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    pill_dispenser.write(pos);              // tell servo to go to position in variable 'pos'
+                     // waits 15ms for the servo to reach the position
+  }
 }
 
 void wifiConnect()

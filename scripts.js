@@ -1,3 +1,5 @@
+messages = [];
+message = "";
 
 var setup = function () {
     const firebaseConfig = {
@@ -17,7 +19,7 @@ var pushToFirebase = function () {
     var d = new Date()
     time = d.toUTCString()
 
-    let message = document.getElementById("messageField").value;
+    message = document.getElementById("messageField").value;
 
     console.log(message);
 
@@ -26,9 +28,29 @@ var pushToFirebase = function () {
     firebase.database().ref('Messages').set({
         [time]: message,
     });
+
+    let button = document.getElementById("send-button");
+    setTimeout(() => { button.textContent = "Message has been sent!"; }, 1000);
+    setTimeout(() => { button.textContent = "Send!"; }, 6000);
+
+    messages.push(message)
 }
 
+var pastMessages = function () {
+    $('#myModal').modal()
 
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    console.log(messages.join('\r\n'))
+    let modal_body = document.getElementById("modal-body");
+
+    var tag =
+        "<div>" +
+        message + "<br/>"
+    "</div>"
+    $(modal_body).append(tag);
+}
 
 
 
