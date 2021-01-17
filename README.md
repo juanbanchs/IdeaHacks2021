@@ -21,3 +21,6 @@ There were a lot of wonderful learning points, as well as experience working tog
 
 ## What's next for Yours, truly
 While we were able to make a lot of progress with the limited time, there are still things that we could certainly improve. For example, we would love to be able to send voice recordings to the Yours, truly user, and as such we would require implementing two new features. Firstly, added support on the firebase server to take in audio recordings, and secondly, added connectivity to a Bluetooth (or added) speaker in order to play these recordings out loud for your loved one. Additionally, we would love to have a microphone in the device, in order to record the user's reaction! Finally, an added extension would be to have similar features with image capture, hence being able to send reactions.
+
+##Try it out yourself!
+https://juanbanchs.github.io/IdeaHacks2021/
